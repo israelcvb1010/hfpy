@@ -18,21 +18,3 @@ class AthletList(list):
     def top3(self):
         return sorted(set([self.sanitize(time) for time in self]))[0:3]
     
-
-def get_coach_data(filename):
-    filepath = f'../data/{filename}'
-    try:
-        with open(filepath) as f:
-            data = f.readline()
-        templ = data.strip().split(',')
-        return AthletList(templ.pop(0), templ.pop(0), templ)
-    except IOError as ioerr:
-        print(f'File error {ioerr}')
-        return None
-
-
-james = get_coach_data('james.txt')
-print(james.top3())
-
-julie = get_coach_data('julie.txt')
-print(julie.top3())
