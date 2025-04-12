@@ -15,6 +15,7 @@ class AthletList(list):
         mins, secs = time.split(splitter)
         return f'{mins}:{secs}'
 
+    @property
     def top3(self):
         return sorted(set([self.sanitize(time) for time in self]))[0:3]
     

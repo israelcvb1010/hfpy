@@ -1,3 +1,6 @@
+import cgitb
+cgitb.enable()
+
 from http.server import HTTPServer, CGIHTTPRequestHandler
 
 port = 8080

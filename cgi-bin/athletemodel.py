@@ -18,7 +18,7 @@ def put_to_store(files):
         athlete = get_coach_data(file)
         athletes[athlete.name] = athlete
     try:
-        with open('../data/athletes.pickle', 'wb') as athf:
+        with open('data/athletes.pickle', 'wb') as athf:
             pickle.dump(athletes, athf)
     except IOError as ioerr:
         print(f'File error (put_to_store) {ioerr}')
@@ -27,7 +27,7 @@ def put_to_store(files):
 def get_from_store():
     athletes = {}
     try:
-        with open('../data/athletes.pickle', 'rb') as athf:
+        with open('data/athletes.pickle', 'rb') as athf:
             athletes = pickle.load(athf)
     except IOError as ioerr:
         print(f'File error (get_from_store): {ioerr}')
