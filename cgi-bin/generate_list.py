@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
+from pathlib import Path
 
-import glob
 import athletemodel
 import yate
 
-
-files = glob.glob('data/*.txt')
+files_dir = Path.cwd() / 'data'
+files = files_dir.glob('**/*.txt')
 athletes = athletemodel.put_to_store(files)
 
 print(yate.start_response())

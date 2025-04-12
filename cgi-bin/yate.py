@@ -1,3 +1,4 @@
+from pathlib import Path
 from string import Template
 
 
@@ -5,19 +6,22 @@ def start_response(response='text/html; charset=utf-8\n\n'):
     return f'Content-Type: {response}'
 
 def start_page(title):
-    with open ('templates/start_page.html') as stf:
+    file = Path.cwd() / 'templates' / 'start_page.html'
+    with open (file) as stf:
         text = stf.read()
     start = Template(text)
     return start.substitute(title=title)
 
 def include_header(title):
-    with open('templates/header.html') as headf:
+    file = Path.cwd() / 'templates' / 'header.html'
+    with open(file) as headf:
         text = headf.read()
     header = Template(text)
     return header.substitute(title=title)
 
 def include_footer(links):
-    with open('templates/footer.html') as footf:
+    file = Path.cwd() / 'templates' / 'footer.html'
+    with open(file) as footf:
         text = footf.read()
     link_string = ''
     for link in links:
