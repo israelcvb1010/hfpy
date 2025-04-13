@@ -50,3 +50,11 @@ def header(text, level=2):
 
 def para(text):
     return f'<p>{text}</p>'
+
+def do_form(action, time_value, text):
+    file = Path.cwd() / 'templates' / 'form.html'
+    with open(file) as formf:
+        text_form = formf.read()
+    form = Template(text_form)
+    return form.substitute(action=action, time_value=time_value, text=text)
+
