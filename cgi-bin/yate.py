@@ -51,10 +51,15 @@ def header(text, level=2):
 def para(text):
     return f'<p>{text}</p>'
 
-def do_form(action, time_value, text):
+def create_inputs(inputs):
+    html_inputs = ''
+    for input in inputs:
+        html_inputs += f'<input type="text" name="{input}" size=40>'
+    return html_inputs
+
+def do_form(name, inputs, method='POST', text='Submit'):
     file = Path.cwd() / 'templates' / 'form.html'
     with open(file) as formf:
-        text_form = formf.read()
-    form = Template(text_form)
-    return form.substitute(action=action, time_value=time_value, text=text)
-
+        form_text = formf.read()
+    inputs_list = create_inputs(inputs)
+    form = Template(form_text)
